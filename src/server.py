@@ -18,5 +18,26 @@ async def add_dept(nome_departamento: str, nome_faculdade: str):
         return {"Mensagem": "Sucesso"}
 
     except mysql.connector.Error as err:
-        print("Something went wrong: {}".format(err))
-        return {"Mensagem": "Departamento ja existente"}
+
+        return {"Erro: ", "{}".format(err)}
+
+@app.get("/read-dept")
+async def get_dept():
+    myCursor.execute("SELECT * FROM get_dept")
+
+    result = myCursor.fetchall()
+    data = []
+
+    for row in result:
+        row_data = {
+            "Nome-Departamento": row[0],
+            "Nome-Faculdade": row[1],
+        }
+
+        data.append(row_data)
+
+    return {"data": data}
+
+@app.put("/update-dept")
+async def update_dept():
+    
