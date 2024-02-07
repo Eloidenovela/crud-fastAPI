@@ -315,7 +315,7 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`Eloide Novela`@`%` FUNCTION `check_dept`(nome varchar(20)) RETURNS tinyint(1)
+CREATE DEFINER=`root`@`127.0.0.1` FUNCTION `check_dept`(nome varchar(20)) RETURNS tinyint(1)
 begin
 
 	if (exists(select * from departamento where departamento.nome = nome)) then
@@ -339,7 +339,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`Eloide Novela`@`%` PROCEDURE `del_dept`(in id_dept int)
+CREATE DEFINER=`root`@`127.0.0.1` PROCEDURE `del_dept`(in id_dept int)
 begin
 	if (exists(select * from departamento)) then
 		delete from departamento
@@ -362,7 +362,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`Eloide Novela`@`%` PROCEDURE `set_dept`(nome varchar(20), nome_faculdade varchar(20))
+CREATE DEFINER=`root`@`127.0.0.1` PROCEDURE `set_dept`(nome varchar(20), nome_faculdade varchar(20))
 begin
 	insert into departamento(nome, Nome_faculdade) value (nome, nome_faculdade);
 end ;;
@@ -381,7 +381,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`Eloide Novela`@`%` PROCEDURE `UPDATE_DEPT`(nome_dept text, nome_facul text, id_dept int)
+CREATE DEFINER=`root`@`127.0.0.1` PROCEDURE `UPDATE_DEPT`(nome_dept text, nome_facul text, id_dept int)
 begin
 	if (exists(select * from departamento)) then 
 		update departamento
