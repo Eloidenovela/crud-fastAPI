@@ -6,24 +6,24 @@ app = FastAPI()
 
 # C
 @app.post("/create-dept")
-async def add_dept(nome_departamento: str, nome_faculdade: str):
-    if not nome_departamento or not nome_faculdade:
-        raise HTTPException(status_code=400, detail="Input invalido")
+async def __add_dept__(__name_dept: str, __name_faculty: str):
+    if not __name_dept or not __name_faculty:
+        raise HTTPException(status_code=400, detail="_INVALID_INPUT_")
 
     try:
         sql = "CALL SET_DEPT(%s, %s);"
-        value = (nome_departamento, nome_faculdade)
+        value = (__name_dept, __name_faculty)
         myCursor.execute(sql, value)
         db.commit()
-        return {"Mensagem": "Sucesso"}
+        return {"OUTPUT": "SUCESS"}
 
     except mysql.connector.Error as err:
 
-        return {"Erro: ", "{}".format(err)}
+        return {"ERROR: ", "{}".format(err)}
 
 # R
 @app.get("/read-dept")
-async def get_dept():
+async def __get_dept__():
     myCursor.execute("SELECT * FROM DEPARTAMENTO")
 
     result = myCursor.fetchall()
@@ -32,36 +32,36 @@ async def get_dept():
 
     for row in result:
         row_data = {
-            "Id-Departamento": row[0],
-            "Nome-Departamento": row[1],
-            "Nome-Faculdade": row[2],
+            "Id-Dept": row[0],
+            "Name-Dept": row[1],
+            "Name-Faculty": row[2],
         }
 
         data.append(row_data)
 
-    return {"Departamentos": data}
+    return {"Depts": data}
 
 # U
 @app.put("/update-dept")
-async def update_dept(nome_departamento:str, nome_faculdade: str, id: int):
+async def __update_dept__(__name_dept: str, __name_faculty: str, id: int):
     try:
         sql = "CALL UPDATE_DEPT(%s, %s, %s);"
-        value = (nome_departamento, nome_faculdade, id)
+        value = (__name_dept, __name_faculty, id)
         myCursor.execute(sql, value)
         db.commit()
-        return {"Sucesso": "Atualizacao feita com sucesso"}
+        return {"OUTPUT": "__UPDATED_SUCESSFULL__"}
     except mysql.connector.Error as err:
 
-        return {"Erro: ", "{}".format(err)}
+        return {"ERROR: ", "{}".format(err)}
 
 # D
 @app.delete("/del-dept")
-async def delete_dept(id: int):
+async def __delete_dept__(id: int):
     try:
         sql = "CALL DEL_DEPT({});".format(id)
         myCursor.execute(sql)
         db.commit()
-        return {"Sucesso": "item removido!"}
+        return {"OUTPUT": "__REMOVED_SUCESSFULL__"}
     
     except mysql.connector.Error as err:
 
