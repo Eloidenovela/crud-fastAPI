@@ -1,24 +1,23 @@
-# Server-CRUD-python-with-FastAPI
-## Projeto CRUD Básico com FastAPI
+# Basic CRUD Project with FastAPI
 
-### Sobre o Projeto
+## About the Project
 
-O projeto é uma aplicação web básica que permite aos usuários criar, ler, atualizar e deletar itens. Cada item tem um identificador único, um nome e um preço. Além disso, cada item pode ser marcado como uma oferta.
+This project is a basic web application that allows users to create, read, update, and delete items. Each item has a unique identifier, a name, and a price. Additionally, each item can be marked as an offer.
 
-### Tecnologias Utilizadas
+## Technologies Used
 
-O projeto foi desenvolvido utilizando as seguintes tecnologias:
+The project was developed using the following technologies:
 
-- **Python**: Linguagem de programação de alto nível utilizada para desenvolver a aplicação.
-- **FastAPI**: Framework moderno e rápido (de alto desempenho) para construção de APIs com Python 3.6+ baseado nos padrões para APIs, como: OpenAPI (anteriormente conhecido como Swagger) e JSON Schema.
+- **Python**: A high-level programming language used to develop the application.
+- **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.6+ based on standard APIs such as OpenAPI (formerly known as Swagger) and JSON Schema.
 
-### Como Executar o Projeto
+## How to Run the Project
 
-Para executar o projeto, você precisa ter o Python instalado em sua máquina. Siga os passos abaixo:
+To run the project, you need to have Python installed on your machine. Follow the steps below:
 
-1. Clone o repositório para sua máquina local usando `git clone`.
-2. Navegue até o diretório do projeto.
-3. Instale as dependências necessárias usando `pip install -r requirements.txt`.
-4. Execute o arquivo principal do projeto usando `python main.py`.
+1. Clone the repository to your local machine using `git clone`.
+2. Navigate to the project directory.
+3. Install the required dependencies using `pip install -r requirements.txt`.
+4. Run the project's main file using `python main.py`.
 
-Após seguir esses passos, a aplicação estará rodando localmente em sua máquina.
+After following these steps, the application will be running locally on your machine.
