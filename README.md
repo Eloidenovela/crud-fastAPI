@@ -1,23 +1,104 @@
-# Basic CRUD Project with FastAPI
+# API
 
-## About the Project
+Este repositório contém o código-fonte de uma API web desenvolvida em Python utilizando o framework FastAPI e o banco de dados PostgreSQL. O objetivo do sistema é facilitar a gestão de requerimentos escolares, permitindo que alunos/estudantes e funcionários submetam e acompanhem suas solicitações de maneira eficiente.
 
-This project is a basic web application that allows users to create, read, update, and delete items. Each item has a unique identifier, a name, and a price. Additionally, each item can be marked as an offer.
+## Funcionalidades
 
-## Technologies Used
+- **Criação de Requerimentos:** Alunos/estudantes e funcionários podem criar novos requerimentos.
+- **Gerenciamento de Requerimentos:** Administradores podem visualizar, aprovar, rejeitar ou atualizar o status dos requerimentos.
+- **Autenticação e Autorização:** Sistema de autenticação para garantir que apenas usuários autorizados possam acessar determinadas funcionalidades.
+- **Notificações:** Notifica os usuários sobre o status dos seus requerimentos.
 
-The project was developed using the following technologies:
+## Tecnologias Utilizadas
 
-- **Python**: A high-level programming language used to develop the application.
-- **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.6+ based on standard APIs such as OpenAPI (formerly known as Swagger) and JSON Schema.
+- **Linguagem de Programação:** Python
+- **Framework Web:** FastAPI
+- **Banco de Dados:** PostgreSQL
+- **Ferramentas de Gerenciamento de Dependências:** `pip`
+- **Servidor de Desenvolvimento:** uvicorn
 
-## How to Run the Project
+## Estrutura do Projeto
 
-To run the project, you need to have Python installed on your machine. Follow the steps below:
+```
+/crud-fastAPI
+├── src/
+│   ├── main.py
+│   ├── models/
+│   ├── routers/
+│   ├── services/
+│   └── controllers/
+├── public/
+|       ├── img/
+|       └── docs/
+├── migrations/
+├── tests/
+├── requirements.txt
+└── README.md
 
-1. Clone the repository to your local machine using `git clone`.
-2. Navigate to the project directory.
-3. Install the required dependencies using `pip install -r requirements.txt`.
-4. Run the project's main file using `python main.py`.
+```
 
-After following these steps, the application will be running locally on your machine.
+- **`crud-fastAPI/`**: Contém os arquivos principais do projeto.
+  - **`main.py`**: Ponto de entrada da aplicação.
+  - **`models/`**: Definições dos modelos de dados.
+  - **`routers/`**: Rotas da API.
+  - **`services/`**: Lógica de negócios e manipulação de dados.
+- **`migrations/`**: Arquivos de migração do banco de dados.
+- **`tests/`**: Testes automatizados para a API.
+- **`requirements.txt`**: Lista de dependências do projeto.
+
+## Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas:
+
+- Python 3.8+
+- PostgreSQL
+- pip (gerenciador de pacotes Python)
+
+## Configuração e Instalação
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/eloidenovela/crud-fastAPI.git
+   cd crud-fastAPI
+   ```
+
+2. Crie e ative um ambiente virtual:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Para Linux/MacOS
+   venv\Scripts\activate     # Para Windows
+   ```
+
+3. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Configure o banco de dados PostgreSQL e atualize as credenciais em `app/database.py`.
+
+5. Execute as migrações para configurar o banco de dados:
+   ```bash
+   alembic upgrade head
+   ```
+
+6. Inicie a aplicação:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+A aplicação estará disponível em [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## Testes
+
+Para executar os testes automatizados, utilize o seguinte comando:
+```bash
+pytest
+```
+
+## Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e enviar pull requests.
+
+## Licença
+
+Este projeto é licenciado sob a licença MIT - veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
