@@ -33,7 +33,8 @@ class UserService(Service):
                 if updated_user:
                     for key, value in data.items():
                         if (hasattr(updated_user, key)):
-                            setattr(updated_user, key, value)
+                            if value:
+                                setattr(updated_user, key, value)
                     session.commit()
                     return updated_user.to_json()
                 return {"response": "not found"}
@@ -72,15 +73,12 @@ class UserService(Service):
             user = session.query(User).filter(User.id == data.get("id")).first()
             if user:
                 return user.to_json()
-            
-            return {"response": "not found"}
 
     def get_by_username(self, data):
         with Session(self.engine) as session:
             user = session.query(User).filter(User.username.like(data.get("username"))).first()
             if user:
                 return user.to_json()
-            return {"response": "not found"}
         
     def verify_user(self, data):
         with Session(self.engine) as session:
@@ -91,10 +89,7 @@ class UserService(Service):
                     User.password.like(data.get("password"))
                 )
             ).first()
-
             if user:
                 return user.to_json()
-
-            return {"response": "not found"}
 
             
